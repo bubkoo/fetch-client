@@ -1,7 +1,7 @@
 {
   "name": "fetch-client",
   "version": "0.0.1",
-  "description": "An interceptable fetch client for both browser and node.js.",
+  "description": "A convenient fetch client with middleware support.",
   "main": "dist/index.js",
   "scripts": {
     "test": "npm run test:node && npm run test:browser",
