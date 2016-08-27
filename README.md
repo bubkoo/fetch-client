@@ -111,3 +111,91 @@ The middleware object must have defined at least one of these methods:
 - `response(res)` will be run after `fetch()`` completes, and will receive the resulting [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response). As with request, it can either pass the Response along, return a modified response, or throw.
 - `responseError(error)` is similar to `requestError`, and acts as a Promise rejection handler for response rejections.
 
+```js
+let jsonMiddleware = {
+  response(res) {
+    return res.json().catch((e) => {
+      return e;
+    });
+  }
+};
+
+// fetchClient.addMiddlewares(ArrayOrMiddlewares)
+fetchClient.addMiddlewares(jsonMiddleware);
+
+// clear
+fetchClient.clearMiddlewares();
+```
+
+### Interceptors' running sequence
+
+```js
+import FetchClient from 'fetch-client';
+
+let fetchClient = new FetchClient();
+let middleware1 = {
+  request(req) {
+    req.headers.set('x-req-fake1', true);
+    return req;
+  },
+
+  requestError(error) {
+    return global.Promise.reject(error);
+  },
+
+  response(res) {
+    res.headers.set('x-res-fake1', true);
+    return res;
+  },
+
+  responseError(error) {
+    return global.Promise.reject(error);
+  }
+};
+let middleware2 = {
+  request(req) {
+    req.headers.set('x-req-fake2', true);
+    return req;
+  },
+
+  requestError(error) {
+    return global.Promise.reject(error);
+  },
+
+  response(res) {
+    res.headers.set('x-res-fake2', true);
+    return res;
+  },
+
+  responseError(error) {
+    return global.Promise.reject(error);
+  }
+};
+
+fetchClient.addMiddlewares([middleware1, middleware2]);
+fetchClient.fetch('http://example.com/page');
+
+
+// the interceptors will be executed with the following sequence, just like:
+let req = new Request('http://example.com/page');
+let promise = Promise.resolve(req);
+
+promise
+  // handle request
+  .then(middleware1.request, null)
+  .then(null, middleware1.requestError)
+  .then(middleware2.request, null)
+  .then(null, middleware2.requestError)
+  // call the fetch method
+  .then(global.fetch, null)
+  // handle response
+  .then(middleware1.response, null)
+  .then(null, middleware1.responseError)
+  .then(middleware2.response, null)
+  .then(null, middleware2.responseError);
+```
+
+### Additional middlewares
+
+
+
