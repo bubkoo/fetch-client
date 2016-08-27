@@ -1,0 +1,76 @@
+{
+  "name": "fetch-client",
+  "version": "0.0.1",
+  "description": "A convenient fetch client with middleware support.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run test:browser && npm run test:node",
+    "test:ci": "NODE_ENV=ci npm run test",
+    "test:browser": "rm -rf test/coverage && karma start",
+    "test:node": "mocha --opts mocha.opts",
+    "build": "rm -rf dist && webpack",
+    "prepublish": "npm run test && npm run build"
+  },
+  "author": {
+    "name": "bubkoo",
+    "email": "bubkoo.wy@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "keywords": [
+    "fetch",
+    "api",
+    "middleware",
+    "intercept",
+    "interceptor",
+    "promise",
+    "observable",
+    "http",
+    "xhr"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bubkoo/fetch-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bubkoo/fetch-client/issues"
+  },
+  "homepage": "https://github.com/bubkoo/fetch-client#readme",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.14.0",
+    "isomorphic-fetch": "^2.2.1",
+    "isparta-loader": "^2.0.0",
+    "karma": "^1.2.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
+    "karma-es6-shim": "^1.0.0",
+    "karma-eslint": "^2.1.0",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sinon": "^1.0.5",
+    "karma-sinon-chai": "^1.2.3",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "^1.8.0",
+    "mocha": "^3.0.2",
+    "phantomjs-prebuilt": "^2.1.12",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "webpack": "^1.13.2"
+  }
+}
