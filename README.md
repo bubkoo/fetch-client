@@ -176,22 +176,22 @@ fetchClient.addMiddlewares([middleware1, middleware2]);
 fetchClient.fetch('http://example.com/page');
 
 
-// the interceptors will be executed with the following sequence, just like:
+// the interceptors will be executed with the following sequence, equal with:
 let req = new Request('http://example.com/page');
 let promise = Promise.resolve(req);
 
 promise
   // handle request
-  .then(middleware1.request, null)
+  .then(middleware1.request)
   .then(null, middleware1.requestError)
-  .then(middleware2.request, null)
+  .then(middleware2.request)
   .then(null, middleware2.requestError)
   // call the fetch method
-  .then(global.fetch, null)
+  .then(global.fetch)
   // handle response
-  .then(middleware1.response, null)
+  .then(middleware1.response)
   .then(null, middleware1.responseError)
-  .then(middleware2.response, null)
+  .then(middleware2.response)
   .then(null, middleware2.responseError);
 ```
 
