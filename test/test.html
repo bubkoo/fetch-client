@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+An alert should be shown with something like
+<pre>
+<code>
+  {
+    "args":{},
+    "headers": {
+      "Accept":"*/*",
+      "Accept-Encoding":"gzip, deflate, sdch",
+      "Accept-Language":"...",
+      "Cache-Control":"max-age=0",
+      "Host":"httpbin.org",
+      "Origin":"origin",
+      "Referer":"origin/test/test.html",
+      "User-Agent":"user_agent"
+    },
+    "origin":"IP",
+    "url":"http://httpbin.org/get"
+  }
+</code>
+</pre>
+
+<script src="../dist/index.js"></script>
+<script>
+
+    var fetchClient = new FetchClient();
+
+    fetchClient.addMiddlewares({
+        response(res) {
+            return res.json().catch((e) => {
+                return e;
+            });
+        }
+    });
+
+    fetchClient.get('http://httpbin.org/get')
+            .then(function (json) {
+                alert('response:\n\n' + JSON.stringify(json, null, '  '));
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+
+</script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 var environment = process.env.NODE_ENV || 'development';
 var reporters   = ['spec', 'coverage'];
 
-if (environment === 'ci') {
+if (environment === 'travis-ci') {
   reporters.push('coveralls');
 }
 
