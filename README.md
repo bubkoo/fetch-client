@@ -1,12 +1,13 @@
 # fetch-client
 
+> A convenient fetch client with middleware support.
+
 [![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/bubkoo/fetch-client/blob/master/LICENSE)
 
 [![build:?](https://img.shields.io/travis/bubkoo/fetch-client/master.svg?style=flat-square)](https://travis-ci.org/bubkoo/fetch-client)
 [![coverage:?](https://img.shields.io/coveralls/bubkoo/fetch-client/master.svg?style=flat-square)](https://coveralls.io/github/bubkoo/fetch-client)
 [![Package Quality](http://npm.packagequality.com/shield/fetch-client.svg)](http://packagequality.com/#?package=fetch-client)
 
-> A convenient fetch client with middleware support.
 
 ## Features
 
@@ -56,3 +57,43 @@ fetchClient.post('http://httpbin.org/post?param1=param1', {
 ```
 
 ## API
+
+### Creating custom config instances
+
+You can create a new instance of FetchClient with a custom config.
+
+**new FetchClient([options])**
+
+```js
+let fetchClient = new FetchClient({
+  headers: {
+    'X-Custom-Header': 'foobar'
+  }
+});
+
+fetchClient.get(url)
+  .then((response) => {
+    // handle response
+  })
+  .catch((error) => {
+    // handle error
+  });
+```
+
+### Request method aliases
+
+For convenience aliases have been provided for all supported request methods.
+
+- fetchClient.fetch(options)
+- fetchClient.get(url[, options])
+- fetchClient.head(url[, options])
+- fetchClient.delete(url[, options])
+- fetchClient.put(url[, data[, options]])
+- fetchClient.post(url[, data[, options]])
+- fetchClient.patch(url[, data[, options]])
+
+*NOTE:* When using the alias methods `url`, `method`, and `data` properties don't need to be specified in options.
+
+
+## Middleware
+
