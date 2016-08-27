@@ -13,10 +13,11 @@
 
 You can do all the same thing that you do with fetch, plus:
 
-- Runs in Node and all browsers(with polyfill).
-- Create custom config instances
 - Custom middlewares to intercept requests, responses, and caught errors.
 - Useful middlewares available as separate npm packages.
+- Create custom config instances.
+- Convenient aliases for the supported methods.
+- Runs in Node and all browsers(with polyfill).
 
 ## Installation
 
