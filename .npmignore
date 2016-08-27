@@ -1,10 +1,16 @@
 .idea
 .DS_Store
+.babelrc
 .editorconfig
+.eslintrc.yml
 .gitignore
 .npmignore
-.jshintrc
 .travis.yml
+karma.conf.js
+mocha.conf.js
+mocha.opts
+webpack.config.js
+webpack.karma.config.js
 
 npm-debug.log*
 
