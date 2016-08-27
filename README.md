@@ -97,3 +97,12 @@ For convenience aliases have been provided for all supported request methods.
 
 ## Middleware
 
+You can add middleware objects to any instance, to intercept requests and responses.
+
+The middleware object must have defined at least one of these methods:
+
+- `request(req)` takes the [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) that will be passed to `global.fetch()` after interceptors run. It should return the same Request, or create a new one. Errors thrown in request interceptors will be handled by `requestError` interceptors.
+- `requestError(error)` acts as a Promise rejection handler during Request creation and request interceptor execution. It will receive the rejection reason, and can either re-throw, or recover by returning a valid Request.
+- `response(res)` will be run after `fetch()`` completes, and will receive the resulting [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response). As with request, it can either pass the Response along, return a modified response, or throw.
+- `responseError(error)` is similar to `requestError`, and acts as a Promise rejection handler for response rejections.
+
