@@ -58,11 +58,9 @@ fetchClient.post('http://httpbin.org/post?param1=param1', {
 
 ## API
 
-### Creating custom config instances
+### Create custom config instance
 
 You can create a new instance of FetchClient with a custom config.
-
-**new FetchClient([options])**
 
 ```js
 let fetchClient = new FetchClient({
@@ -84,13 +82,20 @@ fetchClient.get(url)
 
 For convenience aliases have been provided for all supported request methods.
 
-- fetchClient.fetch(options)
+- fetchClient.fetch(url[, options])
+- fetchClient.fetch(request[, options])
 - fetchClient.get(url[, options])
+- fetchClient.get(request[, options])
 - fetchClient.head(url[, options])
+- fetchClient.head(request[, options])
 - fetchClient.delete(url[, options])
+- fetchClient.delete(request[, options])
 - fetchClient.put(url[, data[, options]])
+- fetchClient.put(request[, data[, options]])
 - fetchClient.post(url[, data[, options]])
+- fetchClient.post(request[, data[, options]])
 - fetchClient.patch(url[, data[, options]])
+- fetchClient.patch(request[, data[, options]])
 
 *NOTE:* When using the alias methods `url`, `method`, and `data` properties don't need to be specified in options.
 
