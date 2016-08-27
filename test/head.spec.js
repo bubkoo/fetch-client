@@ -2,7 +2,7 @@ import 'isomorphic-fetch';
 import FetchClient from '../src/index.js';
 
 
-describe('The delete() method', () => {
+describe('The head() method', () => {
 
   let url    = 'http://example.com/page';
   let client = new FetchClient();
@@ -16,17 +16,18 @@ describe('The delete() method', () => {
 
 
   it('should call global.fetch with the same parameters', (done) => {
-    global.fetch(url, { method: 'DELETE' });
-    client.delete(url)
+    global.fetch(url, { method: 'HEAD' });
+    client.head(url)
       .then(() => {
-        const fetchArgs  = stub.getCall(0).args;
+
+        const fetchArgs = stub.getCall(0).args;
         const clientArgs = stub.getCall(1).args;
 
         expect(stub.callCount).to.be.equal(2);
         expect(clientArgs.length).to.be.equal(1);
         expect(clientArgs[0].url).to.be.equal(fetchArgs[0]);
         expect(clientArgs[0].method).to.be.equal(fetchArgs[1].method);
-        expect(clientArgs[0].method).to.be.equal('DELETE');
+        expect(clientArgs[0].method).to.be.equal('HEAD');
 
         done();
       })
@@ -39,17 +40,18 @@ describe('The delete() method', () => {
       method: 'PUT',
     };
 
-    global.fetch(url, { method: 'DELETE' });
-    client.delete(url, options)
+    global.fetch(url, { method: 'HEAD' });
+    client.head(url, options)
       .then(() => {
-        const fetchArgs  = stub.getCall(0).args;
+
+        const fetchArgs = stub.getCall(0).args;
         const clientArgs = stub.getCall(1).args;
 
         expect(stub.callCount).to.be.equal(2);
         expect(clientArgs.length).to.be.equal(1);
         expect(clientArgs[0].url).to.be.equal(fetchArgs[0]);
         expect(clientArgs[0].method).to.be.equal(fetchArgs[1].method);
-        expect(clientArgs[0].method).to.be.equal('DELETE');
+        expect(clientArgs[0].method).to.be.equal('HEAD');
 
         done();
       })

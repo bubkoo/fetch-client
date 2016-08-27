@@ -6,6 +6,4 @@
 
 [![build:?](https://img.shields.io/travis/bubkoo/fetch-client/master.svg?style=flat-square)](https://travis-ci.org/bubkoo/fetch-client)
 [![coverage:?](https://img.shields.io/coveralls/bubkoo/fetch-client/master.svg?style=flat-square)](https://coveralls.io/github/bubkoo/fetch-client)
-
-[![Package Quality](http://npm.packagequality.com/badge/fetch-client.png)](http://packagequality.com/#?package=fetch-client)
 [![Package Quality](http://npm.packagequality.com/shield/fetch-client.svg)](http://packagequality.com/#?package=fetch-client)

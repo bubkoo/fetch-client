@@ -6,8 +6,8 @@ function isString(o) {
   return typeof o === 'string';
 }
 
-function isUndefined(o) {
-  return typeof o === 'undefined';
+function isBlob(o) {
+  return toString(o) === '[object Blob]';
 }
 
 function isFormData(o) {
@@ -18,15 +18,16 @@ function isURLSearchParams(o) {
   return toString(o) === '[object URLSearchParams]';
 }
 
-function isBlob(o) {
-  return toString(o) === '[object Blob]';
+function isRequest(o) {
+  return o && o instanceof global.Request;
 }
+
 
 class FetchClient {
 
   constructor(options = {}) {
 
-    if (isUndefined(global.fetch)) {
+    if (!global.fetch) {
       throw new Error('FetchClient requires a Fetch API implementation, but the current environment doesn\'t support it. You may need to load a polyfill such as https://github.com/matthew-andrews/isomorphic-fetch.');
     }
 
@@ -35,7 +36,16 @@ class FetchClient {
   }
 
   addMiddlewares(middlewares) {
-    this.middlewares.push(...middlewares);
+
+    if (!Array.isArray(middlewares)) {
+      middlewares = [middlewares];
+    }
+
+    middlewares.forEach(middleware => {
+      if (middleware) {
+        this.middlewares.push(Object(middleware));
+      }
+    });
   }
 
   clearMiddlewares() {
@@ -71,17 +81,39 @@ class FetchClient {
 
   request(urlOrRequest, ...args) {
 
-    const request = urlOrRequest instanceof global.Request
+    const req = isRequest(urlOrRequest)
       ? urlOrRequest
       : this.createRequest(urlOrRequest, ...args);
 
-    let promise = global.Promise.resolve(request);
-    let chains  = [global.fetch, null];
+    let promise = global.Promise.resolve(req);
 
-    for (let middleware of this.middlewares) {
-      chains.unshift(middleware.request, middleware.requestError);
-      chains.push(middleware.response, middleware.responseError);
-    }
+    let chains   = [global.fetch, null];
+    let sequence = this.middlewares;
+    let reversed = [];
+
+    sequence.forEach(middleware => reversed.unshift(middleware));
+
+    reversed.forEach(({ request, requestError }) => {
+
+      if (requestError) {
+        chains.unshift(null, requestError);
+      }
+
+      if (request) {
+        chains.unshift(request, null);
+      }
+    });
+
+    sequence.forEach(({ response, responseError }) => {
+
+      if (response) {
+        chains.push(response, null);
+      }
+
+      if (responseError) {
+        chains.push(null, responseError);
+      }
+    });
 
     while (chains.length) {
       promise = promise.then(chains.shift(), chains.shift());

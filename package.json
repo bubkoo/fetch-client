@@ -1,11 +1,10 @@
 {
   "name": "fetch-client",
   "version": "0.0.1",
-  "description": "A convenient fetch client with middleware support.",
+  "description": "An interceptable fetch client for both browser and node.js.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "npm run test:browser && npm run test:node",
-    "test:ci": "NODE_ENV=ci npm run test",
+    "test": "npm run test:node && npm run test:browser",
     "test:browser": "rm -rf test/coverage && karma start",
     "test:node": "mocha --opts mocha.opts",
     "build": "rm -rf dist && webpack",
@@ -52,6 +51,7 @@
     "eslint-loader": "^1.5.0",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.14.0",
+    "form-data": "^1.0.1",
     "isomorphic-fetch": "^2.2.1",
     "isparta-loader": "^2.0.0",
     "karma": "^1.2.0",

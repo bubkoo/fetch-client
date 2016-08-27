@@ -26,7 +26,7 @@ module.exports = function (config) {
     files: [
       // each file acts as entry point for the webpack configuration
       './node_modules/babel-polyfill/dist/polyfill.js',
-      './test/**/*.spec.js'
+      './test/**/index.spec.js'
     ],
 
 
