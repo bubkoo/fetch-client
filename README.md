@@ -198,5 +198,10 @@ promise
 
 ### Additional middlewares
 
+On the way...
 
+## Contributing
 
+Pull requests and stars are highly welcome.
+
+For bugs and feature requests, please [create an issue](https://github.com/bubkoo/fetch-client/issues/new).
