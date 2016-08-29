@@ -198,7 +198,10 @@ promise
 
 ### Additional middlewares
 
-On the way...
+- npm install --save fetch-client-json
+- npm install --save fetch-client-xml
+- npm install --save fetch-client-useragent
+
 
 ## Contributing
 

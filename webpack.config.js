@@ -9,15 +9,18 @@ module.exports = {
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel'
-    }, {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'eslint'
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel'
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
+    ]
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin()
