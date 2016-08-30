@@ -1,4 +1,4 @@
-# fetch-client
+![fetch-client](https://cdn.rawgit.com/bubkoo/fetch-client/master/logo.svg)
 
 > A convenient fetch client with middleware support.
 
