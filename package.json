@@ -5,14 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "npm run test:node && npm run test:browser",
-    "test:browser": "rm -rf test/coverage && karma start",
-    "test:node": "mocha --opts mocha.opts",
+    "test:browser": "rm -rf ./test/coverage && karma start ./test/config/karma.config.js",
+    "test:node": "mocha --opts ./test/config/mocha.options",
     "build": "rm -rf dist && webpack",
     "prepublish": "npm run test && npm run build"
-  },
-  "author": {
-    "name": "bubkoo",
-    "email": "bubkoo.wy@gmail.com"
   },
   "engines": {
     "node": ">=0.12.0"
@@ -28,6 +24,10 @@
     "http",
     "xhr"
   ],
+  "author": {
+    "name": "bubkoo",
+    "email": "bubkoo.wy@gmail.com"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -54,6 +54,7 @@
     "form-data": "^1.0.1",
     "isomorphic-fetch": "^2.2.1",
     "isparta-loader": "^2.0.0",
+    "js-yaml": "^3.6.1",
     "karma": "^1.2.0",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chai": "^0.1.0",
@@ -63,6 +64,7 @@
     "karma-eslint": "^2.1.0",
     "karma-mocha": "^1.1.1",
     "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sauce-launcher": "^1.0.0",
     "karma-sinon": "^1.0.5",
     "karma-sinon-chai": "^1.2.3",
     "karma-spec-reporter": "0.0.26",
