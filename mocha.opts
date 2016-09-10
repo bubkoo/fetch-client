@@ -1,2 +1,0 @@
---require ./mocha.conf.js
---compilers js:babel-core/register
