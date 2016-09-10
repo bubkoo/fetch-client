@@ -1,0 +1,100 @@
+Chrome_53:
+  base: SauceLabs
+  browserName: Chrome
+  version: '53'
+Chrome_52:
+  base: SauceLabs
+  browserName: Chrome
+  version: '52'
+Chrome_51:
+  base: SauceLabs
+  browserName: Chrome
+  version: '51'
+Chrome_50:
+  base: SauceLabs
+  browserName: Chrome
+  version: '50'
+Chrome_49:
+  base: SauceLabs
+  browserName: Chrome
+  version: '49'
+
+
+Firefox_48:
+  base: SauceLabs
+  browserName: Firefox
+  version: '48'
+Firefox_47:
+  base: SauceLabs
+  browserName: Firefox
+  version: '47'
+Firefox_46:
+  base: SauceLabs
+  browserName: Firefox
+  version: '46'
+
+
+Edge:
+  base: SauceLabs
+  browserName: MicrosoftEdge
+  version: '13'
+
+
+InternetExplorer_11:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '11'
+InternetExplorer_10:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '10'
+InternetExplorer_9:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '9'
+InternetExplorer_8:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '8'
+InternetExplorer_7:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '7'
+InternetExplorer_6:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '6'
+
+
+Safari_9:
+  base: SauceLabs
+  browserName: Safari
+  version: '9'
+Safari_8:
+  base: SauceLabs
+  browserName: Safari
+  version: '8'
+
+
+iOS_9_0:
+  base: SauceLabs
+  browserName: iPhone
+  version: '9.0'
+
+iOS_8_1:
+  base: SauceLabs
+  browserName: iPhone
+  version: '8.1'
+
+Android_5_0:
+  base: SauceLabs
+  browserName: Android
+  version: '5.0'
+Android_4_4:
+  base: SauceLabs
+  browserName: Android
+  version: '4.4'
+Android_4_3:
+  base: SauceLabs
+  browserName: Android
+  version: '4.3'
