@@ -82,7 +82,7 @@ describe('The post() method', () => {
       .catch(done.fail);
   });
 
-  it('should work send a FormData object', (done) => {
+  it.skip('should work send a FormData object', (done) => {
 
     if (!('FormData' in global)) {
       done();
