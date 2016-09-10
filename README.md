@@ -8,6 +8,8 @@
 [![coverage:?](https://img.shields.io/coveralls/bubkoo/fetch-client/master.svg?style=flat-square)](https://coveralls.io/github/bubkoo/fetch-client)
 [![Package Quality](http://npm.packagequality.com/shield/fetch-client.svg)](http://packagequality.com/#?package=fetch-client)
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/bubkoo_wy.svg)](https://saucelabs.com/u/bubkoo_wy)
+
 
 ## Features
 
