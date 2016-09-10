@@ -16,3 +16,6 @@ env:
 
 script:
   - npm test
+
+addons:
+  sauce_connect: true
