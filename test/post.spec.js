@@ -82,14 +82,16 @@ describe('The post() method', () => {
       .catch(done.fail);
   });
 
-  it.skip('should work send a FormData object', (done) => {
+  function skipUnsupported(key, message, callback) {
 
-    if (!('FormData' in global)) {
-      done();
-      return;
-    }
+    const fn = key in global ? it : it.skip;
 
-    let data = new FormData();
+    fn(message, callback);
+  }
+
+  skipUnsupported('FormData', 'should work send a FormData object', (done) => {
+
+    let data = new global.FormData();
 
     data.append('field1', 'field1value');
 
@@ -130,12 +132,7 @@ describe('The post() method', () => {
       .catch(done.fail);
   });
 
-  it('should work send a Blob object', (done) => {
-
-    if (!('Blob' in global)) {
-      done();
-      return;
-    }
+  skipUnsupported('Blob', 'should work send a Blob object', (done) => {
 
     let data = new global.Blob(['hola'], { type: 'text/plain' });
 
@@ -171,12 +168,7 @@ describe('The post() method', () => {
       .catch(done.fail);
   });
 
-  it('should work send a URLSearchParams object', (done) => {
-
-    if (!('URLSearchParams' in global)) {
-      done();
-      return;
-    }
+  skipUnsupported('URLSearchParams', 'should work send a URLSearchParams object', (done) => {
 
     let data = new global.URLSearchParams();
     data.append('field1', 'field1value');
