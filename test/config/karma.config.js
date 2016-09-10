@@ -26,7 +26,7 @@ module.exports = function (config) {
   } else {
 
     customLaunchers = null;
-    browsers        = ['PhantomJS']
+    browsers        = ['Chrome']
   }
 
 

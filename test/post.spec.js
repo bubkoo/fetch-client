@@ -93,6 +93,8 @@ describe('The post() method', () => {
       body: data,
       method: 'POST'
     });
+
+
     client.post(url, data)
       .then(() => {
 
@@ -104,8 +106,21 @@ describe('The post() method', () => {
         expect(clientArgs[0].url).to.be.equal(fetchArgs[0]);
         expect(clientArgs[0].method).to.be.equal(fetchArgs[1].method);
         expect(clientArgs[0].method).to.be.equal('POST');
-        expect(clientArgs[0].formData).to.throw(Error);
 
+        // expect(clientArgs[0].formData).to.throw(Error);
+
+        return global.Promise.all([
+          clientArgs[0].formData(),
+          new global.Request(url, {
+            body: data,
+            method: 'POST'
+          }).formData()
+        ]);
+
+        done();
+      })
+      .then(([clientFormData, fetchFormData]) => {
+        expect(clientFormData).to.be.equal(fetchFormData);
         done();
       })
       .catch(done.fail);
