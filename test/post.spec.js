@@ -1,5 +1,4 @@
 import 'isomorphic-fetch';
-import FormData    from 'form-data';
 import FetchClient from '../src/index.js';
 
 
@@ -85,6 +84,11 @@ describe('The post() method', () => {
 
   it('should work send a FormData object', (done) => {
 
+    if (!('FormData' in global)) {
+      done();
+      return;
+    }
+
     let data = new FormData();
 
     data.append('field1', 'field1value');
@@ -139,6 +143,7 @@ describe('The post() method', () => {
       body: data,
       method: 'POST'
     });
+
     client.post(url, data)
       .then(() => {
 
