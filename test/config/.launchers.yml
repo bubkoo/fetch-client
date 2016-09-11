@@ -1,40 +1,32 @@
-Chrome_53:
+Chrome-53:
+  name: Chrome 53
   base: SauceLabs
   browserName: Chrome
-  version: '53'
-Chrome_52:
-  base: SauceLabs
-  browserName: Chrome
-  version: '52'
-Chrome_51:
-  base: SauceLabs
-  browserName: Chrome
-  version: '51'
-Chrome_50:
-  base: SauceLabs
-  browserName: Chrome
-  version: '50'
-Chrome_49:
-  base: SauceLabs
-  browserName: Chrome
-  version: '49'
-
-
-Firefox_48:
-  base: SauceLabs
-  browserName: Firefox
-  version: '48'
-Firefox_47:
-  base: SauceLabs
-  browserName: Firefox
-  version: '47'
-Firefox_46:
-  base: SauceLabs
-  browserName: Firefox
-  version: '46'
-
-
-Edge:
-  base: SauceLabs
-  browserName: MicrosoftEdge
-  version: '13'
+  version: 53
+#Chrome-52:
+#  name: Chrome 52
+#  base: SauceLabs
+#  browserName: Chrome
+#  version: 52
+#Chrome-51:
+#  name: Chrome 51
+#  base: SauceLabs
+#  browserName: Chrome
+#  version: 51
+#Chrome-50:
+#  name: Chrome 50
+#  base: SauceLabs
+#  browserName: Chrome
+#  version: 50
+#Chrome-49:
+#  name: Chrome 49
+#  base: SauceLabs
+#  browserName: Chrome
+#  version: 49
+#
+#
+#Firefox-48:
+#  name: Firefox 48
+#  base: SauceLabs
+#  browserName: Firefox
+#  version: 48

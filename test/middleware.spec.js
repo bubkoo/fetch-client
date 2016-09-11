@@ -193,7 +193,7 @@ describe('Middleware features', () => {
       });
   });
 
-  it.skip('should calls middlewares in order', (done) => {
+  it('should calls middlewares in order', (done) => {
 
     let middleware1RequestStub      = sinon.spy(middleware1, 'request');
     let middleware2RequestStub      = sinon.spy(middleware2, 'request');

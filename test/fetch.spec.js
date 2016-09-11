@@ -16,7 +16,7 @@ describe('The fetch() method', () => {
   beforeEach(() => stub.reset());
 
 
-  describe('of default instance', () => {
+  describe('with default instance', () => {
 
     it('should call global.fetch with the same parameters (only url)', (done) => {
 
@@ -126,7 +126,7 @@ describe('The fetch() method', () => {
     });
   });
 
-  describe('of specific instance', () => {
+  describe('with specific instance', () => {
 
     it('should call global.fetch with the correct options', (done) => {
 

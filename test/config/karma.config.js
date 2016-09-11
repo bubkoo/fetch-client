@@ -1,36 +1,35 @@
 // Karma configuration
 // Generated on Sat Aug 27 2016 00:57:17 GMT+0800 (CST)
 
-var fs   = require('fs')
-var yaml = require('js-yaml')
-
+var customLaunchers = require('./launchers.js');
 
 module.exports = function (config) {
 
 
-  var environment     = process.env.NODE_ENV || 'development';
-  var reporters       = ['spec', 'coverage'];
-  var browsers        = null;
-  var customLaunchers = null;
-
+  var environment = process.env.NODE_ENV || 'development';
+  var reporters   = ['spec', 'coverage'];
+  var browsers    = Object.keys(customLaunchers);
 
   if (environment === 'travis-ci') {
 
     reporters.push('coveralls', 'saucelabs');
 
-    var launchers = fs.readFileSync('./test/config/.launchers.yml');
-
-    customLaunchers = yaml.safeLoad(launchers);
-    browsers        = Object.keys(customLaunchers);
-
   } else {
 
-    customLaunchers = null;
-    browsers        = ['Chrome']
+    // customLaunchers = null;
+    // browsers        = ['Chrome'];
   }
 
 
+  reporters = ['spec', 'saucelabs'];
+
+
   config.set({
+
+    sauceLabs: {
+      username: 'bubkoo_wy',
+      accessKey: '13f9f40c-d16f-40db-8087-1511061652b1'
+    },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '../../',

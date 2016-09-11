@@ -1,4 +1,6 @@
 import 'isomorphic-fetch';
+import './node.fix';
+import FormData    from 'form-data';
 import FetchClient from '../src/index.js';
 
 
@@ -84,7 +86,7 @@ describe('The post() method', () => {
 
   function skipUnsupported(key, message, callback) {
 
-    const fn = key in global ? it : it.skip;
+    const fn = (key in global) ? it : it.skip;
 
     fn(message, callback);
   }
@@ -94,6 +96,7 @@ describe('The post() method', () => {
     let data = new global.FormData();
 
     data.append('field1', 'field1value');
+    data.append('field2', 'field2value');
 
     global.fetch(url, {
       body: data,
@@ -122,11 +125,14 @@ describe('The post() method', () => {
             method: 'POST'
           }).formData()
         ]);
-
-        done();
       })
+      .catch(done.fail)
       .then(([clientFormData, fetchFormData]) => {
-        expect(clientFormData).to.be.equal(fetchFormData);
+
+        console.log(clientFormData.get('field1'), fetchFormData.get('field1'))
+
+        expect(clientFormData.get('field1')).to.be.equal(fetchFormData.get('field1'));
+        expect(clientFormData.get('field2')).to.be.equal(fetchFormData.get('field2'));
         done();
       })
       .catch(done.fail);
@@ -134,7 +140,7 @@ describe('The post() method', () => {
 
   skipUnsupported('Blob', 'should work send a Blob object', (done) => {
 
-    let data = new global.Blob(['hola'], { type: 'text/plain' });
+    let data = new global.Blob(['hello fetch'], { type: 'text/plain' });
 
     global.fetch(url, {
       body: data,
@@ -172,6 +178,7 @@ describe('The post() method', () => {
 
     let data = new global.URLSearchParams();
     data.append('field1', 'field1value');
+    data.append('field2', 'field2value');
 
     global.fetch(url, {
       body: data,
