@@ -22,7 +22,7 @@ var browsers  = [{
   versions: ['9.0', '8.1']
 }, {
   browserName: 'Android',
-  versions: ['5.0', '4.4', '4.3']
+  // versions: ['5.0', '4.4', '4.3']
 }];
 
 
@@ -46,5 +46,7 @@ browsers.forEach(function (item) {
   }
 });
 
+
+console.log(launchers);
 
 module.exports = launchers;

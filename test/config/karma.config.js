@@ -42,7 +42,7 @@ module.exports = function (config) {
     files: [
       // each file acts as entry point for the webpack configuration
       './node_modules/babel-polyfill/dist/polyfill.js',
-      './test/index.spec.js'
+      './test/index.js'
     ],
 
     // list of files to exclude
