@@ -1,4 +1,4 @@
-import FetchClient from '../src/index.js';
+import FetchClient from '../../src/index.js';
 
 describe('The detection of polyfill', () => {
 

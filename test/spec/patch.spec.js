@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import FetchClient from '../src/index.js';
+import FetchClient from '../../src/index.js';
 
 
 describe('The patch() method', () => {

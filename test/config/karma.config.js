@@ -10,26 +10,21 @@ module.exports = function (config) {
   var reporters   = ['spec', 'coverage'];
   var browsers    = Object.keys(customLaunchers);
 
-  if (environment === 'travis-ci') {
+  customLaunchers = null;
+  browsers        = ['PhantomJS'];
+  reporters.push('coveralls');
 
-    reporters.push('coveralls', 'saucelabs');
-
-  } else {
-
-    // customLaunchers = null;
-    // browsers        = ['Chrome'];
-  }
-
-
-  reporters = ['spec', 'saucelabs'];
-
+  // if (environment === 'travis-ci') {
+  //
+  //   reporters.push('coveralls', 'saucelabs');
+  //
+  // } else {
+  //
+  //   customLaunchers = null;
+  //   browsers        = ['PhantomJS'];
+  // }
 
   config.set({
-
-    sauceLabs: {
-      username: 'bubkoo_wy',
-      accessKey: '13f9f40c-d16f-40db-8087-1511061652b1'
-    },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '../../',
@@ -42,7 +37,7 @@ module.exports = function (config) {
     files: [
       // each file acts as entry point for the webpack configuration
       './node_modules/babel-polyfill/dist/polyfill.js',
-      './test/index.js'
+      './test/spec/index.spec.js'
     ],
 
     // list of files to exclude
@@ -51,7 +46,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      './test/**/*.spec.js': ['webpack']
+      './test/spec/*.spec.js': ['webpack']
     },
 
     coverageReporter: {

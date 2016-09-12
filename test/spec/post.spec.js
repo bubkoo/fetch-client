@@ -1,7 +1,6 @@
 import 'isomorphic-fetch';
 import './node.fix';
-import FormData    from 'form-data';
-import FetchClient from '../src/index.js';
+import FetchClient from '../../src/index.js';
 
 
 describe('The post() method', () => {
@@ -107,34 +106,36 @@ describe('The post() method', () => {
     client.post(url, data)
       .then(() => {
 
-        const fetchArgs  = stub.getCall(0).args;
-        const clientArgs = stub.getCall(1).args;
+        const fetchArgs     = stub.getCall(0).args;
+        const clientArgs    = stub.getCall(1).args;
+        const clientRequest = clientArgs[0];
+        const nativeRequest = new global.Request(url, {
+          body: data,
+          method: 'POST'
+        });
 
         expect(stub.callCount).to.be.equal(2);
         expect(clientArgs.length).to.be.equal(1);
-        expect(clientArgs[0].url).to.be.equal(fetchArgs[0]);
-        expect(clientArgs[0].method).to.be.equal(fetchArgs[1].method);
-        expect(clientArgs[0].method).to.be.equal('POST');
+        expect(clientRequest.url).to.be.equal(fetchArgs[0]);
+        expect(clientRequest.method).to.be.equal(fetchArgs[1].method);
+        expect(clientRequest.method).to.be.equal('POST');
 
-        // expect(clientArgs[0].formData).to.throw(Error);
-
-        return global.Promise.all([
-          clientArgs[0].formData(),
-          new global.Request(url, {
-            body: data,
-            method: 'POST'
-          }).formData()
-        ]);
-      })
-      .catch(done.fail)
-      .then(([clientFormData, fetchFormData]) => {
-
-        console.log(clientFormData.get('field1'), fetchFormData.get('field1'))
-
-        expect(clientFormData.get('field1')).to.be.equal(fetchFormData.get('field1'));
-        expect(clientFormData.get('field2')).to.be.equal(fetchFormData.get('field2'));
+        expect(clientRequest.formData).to.throw(Error);
         done();
+
+
+        // return Promise.all([
+        //   clientRequest.formData(),
+        //   nativeRequest.formData()
+        // ]);
       })
+      // .then(([clientFormData, fetchFormData]) => {
+      //
+      //   expect(clientFormData.get('field1')).to.be.equal(fetchFormData.get('field1'));
+      //   expect(clientFormData.get('field2')).to.be.equal(fetchFormData.get('field2'));
+      //
+      //   done();
+      // })
       .catch(done.fail);
   });
 

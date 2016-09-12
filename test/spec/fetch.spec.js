@@ -1,6 +1,6 @@
 import 'isomorphic-fetch';
 import './node.fix';
-import FetchClient from '../src/index.js';
+import FetchClient from '../../src/index.js';
 
 
 describe('The fetch() method', () => {
