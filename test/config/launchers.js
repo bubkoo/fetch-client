@@ -1,7 +1,7 @@
 var launchers = {};
 var browsers  = [{
   browserName: 'Chrome',
-  // versions: [53, 52, 51, 50, 49]
+  versions: [53, 52, 51, 50, 49]
 }, {
   browserName: 'Firefox',
   // versions: [48, 47, 46]
@@ -37,7 +37,7 @@ browsers.forEach(function (item) {
       var key = (launcher || browserName) + '_' + ('' + version).replace(/\./g, '_');
 
       launchers[key] = {
-        name: browserName + ' ' + version,
+        // name: browserName + ' ' + version,
         base: 'SauceLabs',
         version: version,
         browserName: browserName
